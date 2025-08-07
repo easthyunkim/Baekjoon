@@ -1,0 +1,5 @@
+N=int(input())
+A=list(map(int, input().split()))
+M = max(A)
+S = sum(A)
+print(S/M*100/int(N))
