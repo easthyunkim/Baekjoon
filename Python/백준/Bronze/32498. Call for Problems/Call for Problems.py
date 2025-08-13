@@ -1,5 +1,9 @@
 import sys
 input = sys.stdin.readline
 N = int(input())
-A = [1 for _ in range(N) if int(input()) % 2 == 1]
-print(len(A))
+cnt = 0
+for _ in range(N):
+    P = int(input())
+    if P % 2 == 1:
+        cnt += 1
+print(cnt)
