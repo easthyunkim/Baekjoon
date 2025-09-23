@@ -1,26 +1,23 @@
+#참고한 블로그 : https://rapun7el.tistory.com/22
+#기존 풀이외의 방법이여서 찾음!
+
 import sys
 input = sys.stdin.readline
+#입력받기
+N = int(input())
+memory = {1:1,2:1,3:2,4:3,5:5}
+p = 1000000007
 
-def matrix_multiplication(a,b,mod):
-    result = [[0,0],[0,0]]
-    for i in range(2):
-        for j in range(2):
-            for k in range(2):
-                result[i][j] += a[i][k]*b[k][j]
-                result[i][j] %= mod
-    return result
- 
-def matrix_exponentiation(m,n,mod):
-    result = [[1,0],[0,1]]
-    while n > 0:
-        if n % 2 == 1:
-            result = matrix_multiplication(result,m,mod)
-        m = matrix_multiplication(m,m,mod)
-        n //= 2
-    return result
- 
-n = int(input())
-matrix = [[1,1],[1,0]]
-mod = 1000000007
-result = matrix_exponentiation(matrix,n,mod)
-print(result[1][0])
+#피보나치 수열 정의하기
+def Fibo(n):
+  if memory.get(n):
+    return memory[n]
+  else:
+    if n%2 == 1:
+      memory[n] = (Fibo(n//2)**2+Fibo(n//2+1)**2)%p
+    else:
+      memory[n] = (Fibo(n+1)-Fibo(n-1))%p
+    return memory[n]
+
+#출력하기
+print(Fibo(N))
