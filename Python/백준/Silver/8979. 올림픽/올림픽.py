@@ -1,18 +1,13 @@
 import sys
 input = sys.stdin.readline
 
-n, k_1 = map(int, input().split())
-arr = []
+n, k = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(n)]
 
-
-for i in range(n):
-    k_2, g, s, b = map(int, input().split())
-    arr.append([k_2, g, s, b])
-
-arr_sorted = sorted(arr, key=lambda x:(x[0], x[1], x[2], x[3]))
+arr_sorted = sorted(arr, key=lambda x:(x[1], x[2], x[3]), reverse=True)
 
 for i in range(n):
-    if arr_sorted[i][0] == k_1:
+    if arr_sorted[i][0] == k:
         ranking = i
 
 for i in range(n):
