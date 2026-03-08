@@ -1,0 +1,20 @@
+import sys
+input = sys.stdin.readline
+
+i = 1
+while 1:
+    n0 = int(input())
+    if n0 == 0:
+        break
+    n1 = 3*n0
+    if n1%2 == 0:
+        n2 = n1//2
+    else:
+        n2 = (n1+1)//2
+    n3 = 3*n2
+    n4 = n3//9
+    if 2*n4 == n0:
+        print(f'{i}. even {n4}')
+    else:
+        print(f'{i}. odd {n4}')
+    i += 1
